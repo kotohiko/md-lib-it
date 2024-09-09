@@ -16,6 +16,8 @@
 
 > The manufacturers of teakettles and toasters know their products are often used in an ==asynchronous== manner, so they raise an audible signal when they complete their task. Finding the right balance of sequentiality and asynchrony is often a characteristic of efficient people—and the same is true of programs.
 
+无独有偶，上述问题在今天看来似乎更像是考虑用「线程」来解决。没错，正是这些促使进程出现的需求也同样催生着线程的出现。线程可以理解为一个进程范围内的多个控制流。线程可以共享进程内的资源，如内存句柄、文件句柄。但是，每个线程都有各自的程序计数器（*program conuter*）、栈以及局部变量等。
+
 
 
 ### 1.2   线程的优势
