@@ -1,10 +1,10 @@
-## 第 1 章   简介
+## 第 1 章   简介（Introduction）
 
 
 
 > Threads are an inescapable feature of the Java language, and they can simplify the develop- ment of complex systems by turning complicated ==asynchronous code== into simpler straight-line code. In addition, threads are the easiest way to tap the computing power of multiprocessor systems.
 
-### 1.1   并发简史
+### 1.1   并发简史（A (very) brief history of concurrency）
 
 操作系统（英文：*operating system*，后面简称 OS）的出现解决了早期计算机很多问题，如：OS 可以让计算机运行多个程序，每个程序都运行在单独的「进程（*process*）」中。具体做法包括，OS 给每个进程分配资源，包括内存、文件句柄以及安全证书等。当然，进程之间也并非是绝对隔离的，在有需要的前提下可以通过一些==粗粒度==的通信机制来交换数据，包括套接字、信号处理器、共享内存、信号量、文件等。
 
@@ -18,9 +18,25 @@
 
 无独有偶，上述问题在今天看来似乎更像是考虑用「线程」来解决。没错，正是这些促使进程出现的需求也同样催生着线程的出现。线程可以理解为一个进程范围内的多个控制流。线程可以共享进程内的资源，如内存句柄、文件句柄。但是，每个线程都有各自的程序计数器（*program conuter*）、栈以及局部变量等。
 
+> Threads are sometimes called *lightweight processes*, and most modern operating systems treat threads, not processes, as the basic units of scheduling. 
+
+关于到底线程和进程孰为基本调度单位？原文答案也比较清楚了，半个多世纪前，线程尚未普及甚至还未诞生之时，自然不可能是调度的基本单位；多线程的概念普及并且流行以后，才慢慢成为了基本调度单位。
+
+### 1.2   线程的优势（Benifits of threads）
 
 
-### 1.2   线程的优势
+
+#### 1.2.1   发挥多处理器的强大功能（Exploiting multiple processors）
+
+
+
+#### 1.2.2   建模的简单性（Simplicity of modeling）
+
+> The same is true for software: a program that processes one type of task sequentially is simpler to write, less error-prone, and easier to test than one managing multiple different types of tasks at once.
+
+
+
+
 
 
 
