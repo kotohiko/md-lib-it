@@ -2,7 +2,7 @@
 
 
 
-> Threads are an inescapable feature of the Java language, and they can simplify the develop- ment of complex systems by turning complicated ==asynchronous code== into simpler straight-line code. In addition, threads are the easiest way to tap the computing power of multiprocessor systems.
+> Threads are an inescapable feature of the Java language, and they can simplify the development of complex systems by turning complicated ==asynchronous code== into simpler straight-line code. In addition, threads are the easiest way to tap the computing power of multiprocessor systems.
 
 ### 1.1   并发简史（A (very) brief history of concurrency）
 
@@ -103,3 +103,15 @@
 **最大大小／最大线程数（*maximum pool size*）**表示的是可同时活动的线程数量的上限。
 
 如果一个线程的空闲时间超过了存活时间，那么将被标记为「可回收的」，并且当线程池的大小超过了基本大小时，这个线程将会被终止。
+
+
+
+# 第四部分   高级主题
+
+## 第 15 章   原子变量与非阻塞同步机制
+
+本章将探讨原子变量（如 `AtomicInteger`）与非阻塞的同步机制。
+
+近年来，在并发算法领域侧重研究的所谓「非阻塞算法（*nonblocking algorithms*）」，是指采用底层的原子机器指令（如 Compare and Swap，简称 CAS 指令）代替锁来确保数据在并发访问中的一致性。
+
+相比锁，非阻塞算法在设计和实现上复杂的多，但是具有更好的活跃性和可伸缩性。
