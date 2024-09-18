@@ -2,9 +2,8 @@
 
 
 
-> 【精彩原文】
+> 【精彩原文】Threads are an inescapable feature of the Java language, and they can simplify the development of complex systems by turning complicated ==asynchronous code== into simpler straight-line code. In addition, threads are the easiest way to tap the computing power of multiprocessor systems.
 >
-> Threads are an inescapable feature of the Java language, and they can simplify the development of complex systems by turning complicated ==asynchronous code== into simpler straight-line code. In addition, threads are the easiest way to tap the computing power of multiprocessor systems.
 
 ### 1.1   并发简史（A (very) brief history of concurrency）
 
@@ -16,15 +15,13 @@
 - 公平性。比如不同的用户或程序对于计算机资源应该享有同等的使用权。
 - 便利性。在计算多个任务时，编写多个程序并进行必要的通信，比只编写一个程序要容易实现得多。
 
-> 【精彩原文】
+> 【精彩原文】The manufacturers of teakettles and toasters know their products are often used in an ==asynchronous== manner, so they raise an audible signal when they complete their task. Finding the right balance of sequentiality and asynchrony is often a characteristic of efficient people—and the same is true of programs.
 >
-> The manufacturers of teakettles and toasters know their products are often used in an ==asynchronous== manner, so they raise an audible signal when they complete their task. Finding the right balance of sequentiality and asynchrony is often a characteristic of efficient people—and the same is true of programs.
 
 无独有偶，上述问题在今天看来似乎更像是考虑用「线程」来解决。没错，正是这些促使进程出现的需求也同样催生着线程的出现。线程可以理解为一个进程范围内的多个控制流。线程可以共享进程内的资源，如内存句柄、文件句柄。但是，每个线程都有各自的程序计数器（*program conuter*）、栈以及局部变量等。
 
-> 【精彩原文】
+> 【精彩原文】Threads are sometimes called *lightweight processes*, and most modern operating systems treat threads, not processes, as the basic units of scheduling. 
 >
-> Threads are sometimes called *lightweight processes*, and most modern operating systems treat threads, not processes, as the basic units of scheduling. 
 
 关于到底线程和进程孰为 OS 的基本调度单位？原文答案也比较清楚了，半个多世纪前，线程尚未普及甚至还未诞生之时，自然不可能是调度的基本单位；多线程的概念普及并且流行以后，才慢慢成为了基本调度单位。
 
@@ -58,53 +55,81 @@
 
 
 
-## 第 2 章   线程安全性
+## 第 2 章   线程安全性（Thread Safety）
 
 初学的时候可能会不太容易理解「线程安全」到底是个什么玩意儿。根据我的学习经验来看，至少可以先给自己建立一个基本的认知，那便是：当极短时间内有很多请求要修改某一个公共变量的时候，这时候就非常容易出现线程安全问题。
 
-> 【精彩原文】
+> 【精彩原文】Writing thread-safe code is, at its core, about managing access to *state*, and in particular to *shared*, *mutable state*.
 >
-> Writing thread-safe code is, at its core, about managing access to *state*, and in particular to *shared*, *mutable state*.
+
+“要编写**线程安全**的代码，其核心在于要对状态访问操作进行管理，==特别是对共享的和可变的状态的访问==”。牢牢记住这些基础概念，线程安全问题万变不离其宗的核心就在于此。
+
+> 【精彩原文】Whether an object needs to be thread-safe depends on whether it will be accessed from multiple threads.
+
+
+
+> 【精彩原文】*Whenever more than one thread accesses a given state variable, and one of them might write to it, they all must coordinate their access to it using synchronization.* The primary mechanism for synchronization in Java is the `synchronized` keyword, which provides exclusive locking, but the term “synchronization” also includes the use of volatile variables, explicit locks, and atomic variables.
+
+
+
+> 【精彩原文】If multiple threads access the same mutable state variable without appropriate synchronization, *your program is broken*. There are three ways to fix it:
+>
+> - *Don’t share* the state variable across threads;
+> - Make the state variable *immutable*; or
+> - Use *synchronization* whenever accessing the state variable.
+
+说白了想要避免线程安全问题，也确实就这三种是有效途径。
+
+
+
+
 
 ### 2.1   什么是线程安全性（What is thread safety?）
 
-> 【精彩原文】
+> 【精彩原文】The more formal attempts are so complicated as to offer little practical guidance or intuitive understanding, and the rest are informal descriptions that can seem downright circular.
+
+在我长期的学习之旅中深有体会，那便是：纠结很正式的基本概念往往会很痛苦，但尝试结合举例来理解往往能瞬间融会贯通。
+
+> 【精彩原文】A class is *thread-safe* if it behaves correctly when accessed from multiple threads, regardless of the scheduling or interleaving of the execution of those threads by the runtime environment, and with no additional synchronization or other coordination on the part of the calling code.
 >
-> A class is *thread-safe* if it behaves correctly when accessed from multiple threads, regardless of the scheduling or interleaving of the execution of those threads by the runtime environment, and with no additional synchronization or other coordination on the part of the calling code.
 
 接下来是死磕环节。
 
-> 【问问 AI】（阿里通义）“当多个线程访问某个类时，不管运行时环境采用何种调度方式或者这些线程将如何交替执行。”具体都有什么调度方式？线程又具体如何交替执行呢？
+> 【问问 AI】
 >
-> 在讨论多线程编程时，提到的“不管运行时环境采用何种调度方式或者这些线程将如何交替执行”主要是指在并发环境中，线程的执行顺序是不确定的，因此编写并发程序时需要考虑线程安全问题。下面是关于线程调度的一些常见方式以及线程如何交替执行的简要说明：
+> - 我：“当多个线程访问某个类时，不管运行时环境采用何种调度方式或者这些线程将如何交替执行。”具体都有什么调度方式？线程又具体如何交替执行呢？
 >
-> ### 线程调度方式
+> - 通义千问：
 >
-> - **先来先服务（FCFS, First-Come, First-Served）**：
->     - 这种简单的调度策略按照线程到达的顺序来调度线程。但是这种策略在多核系统中不太常用，因为它不支持并发执行。
-> - **轮询（Round Robin）**：
->     - 在轮询调度中，每个线程都会获得一个固定的时间片（time slice）。一旦一个线程的时间片用尽，它就会被挂起，CPU 会调度下一个线程执行。这种方式确保了所有线程都能公平地获得 CPU 时间。
-> - **优先级调度（Priority Scheduling）**：
->     - 每个线程都被赋予一个优先级，高优先级的线程会被优先调度。如果当前运行的线程被更高优先级的线程抢占，则会暂停当前线程，转而执行更高优先级的线程。
-> - **多级反馈队列（Multilevel Feedback Queue）**：
->     - 这是一种综合性的调度方法，它将线程分为不同的优先级队列，并为每个队列分配不同的时间片。当一个线程的时间片用尽时，它会被移到较低优先级的队列中，从而让出 CPU 给其他线程。
+>     在讨论多线程编程时，提到的“不管运行时环境采用何种调度方式或者这些线程将如何交替执行”主要是指在并发环境中，线程的执行顺序是不确定的，因此编写并发程序时需要考虑线程安全问题。下面是关于线程调度的一些常见方式以及线程如何交替执行的简要说明：
 >
-> ### 线程如何交替执行
+>     ### 线程调度方式
 >
-> 线程的交替执行依赖于操作系统调度器的策略。以下是几种常见的线程交替执行的情况：
+>     - **先来先服务（FCFS, First-Come, First-Served）**：
+>         - 这种简单的调度策略按照线程到达的顺序来调度线程。但是这种策略在多核系统中不太常用，因为它不支持并发执行。
+>     - **轮询（Round Robin）**：
+>         - 在轮询调度中，每个线程都会获得一个固定的时间片（time slice）。一旦一个线程的时间片用尽，它就会被挂起，CPU 会调度下一个线程执行。这种方式确保了所有线程都能公平地获得 CPU 时间。
+>     - **优先级调度（Priority Scheduling）**：
+>         - 每个线程都被赋予一个优先级，高优先级的线程会被优先调度。如果当前运行的线程被更高优先级的线程抢占，则会暂停当前线程，转而执行更高优先级的线程。
+>     - **多级反馈队列（Multilevel Feedback Queue）**：
+>         - 这是一种综合性的调度方法，它将线程分为不同的优先级队列，并为每个队列分配不同的时间片。当一个线程的时间片用尽时，它会被移到较低优先级的队列中，从而让出 CPU 给其他线程。
 >
-> 1. **时间片轮转**：
->     - 当一个线程的时间片耗尽时，调度器会选择另一个线程来执行。这种方式保证了所有线程都有机会执行。
-> 2. **自愿放弃**：
->     - 线程可以选择在某些点上自愿放弃CPU时间，例如在调用 `yield()` 函数时，它会请求调度器将 CPU 时间分配给其他线程。
-> 3. **阻塞操作**：
->     - 如果一个线程正在进行 I/O 操作或等待锁释放，它会被挂起，调度器会选择其他就绪线程执行。
-> 4. **抢占式调度**：
->     - 在抢占式调度中，如果一个更高优先级的线程变为可运行状态，它可以立即抢占当前正在执行的线程的 CPU 时间。
-> 5. **响应中断**：
->     - 当系统接收到硬件中断时，当前正在执行的线程会被挂起，以便处理中断。
+>     ### 线程如何交替执行
 >
-> 总之，线程的交替执行是由操作系统调度器根据一定的算法来决定的，目的是为了最大化系统的吞吐量、响应时间和公平性。在线程设计时，开发者需要考虑到这些不确定性，确保线程之间的协作和数据一致性。
+>     线程的交替执行依赖于操作系统调度器的策略。以下是几种常见的线程交替执行的情况：
+>
+>     1. **时间片轮转**：
+>         - 当一个线程的时间片耗尽时，调度器会选择另一个线程来执行。这种方式保证了所有线程都有机会执行。
+>     2. **自愿放弃**：
+>         - 线程可以选择在某些点上自愿放弃CPU时间，例如在调用 `yield()` 函数时，它会请求调度器将 CPU 时间分配给其他线程。
+>     3. **阻塞操作**：
+>         - 如果一个线程正在进行 I/O 操作或等待锁释放，它会被挂起，调度器会选择其他就绪线程执行。
+>     4. **抢占式调度**：
+>         - 在抢占式调度中，如果一个更高优先级的线程变为可运行状态，它可以立即抢占当前正在执行的线程的 CPU 时间。
+>     5. **响应中断**：
+>         - 当系统接收到硬件中断时，当前正在执行的线程会被挂起，以便处理中断。
+>
+>     总之，线程的交替执行是由操作系统调度器根据一定的算法来决定的，目的是为了最大化系统的吞吐量、响应时间和公平性。在线程设计时，开发者需要考虑到这些不确定性，确保线程之间的协作和数据一致性。
 
 “主调代码不需要任何额外的同步或协同”。这句话不难理解，既然被调用方（供应商）声称自己的「线程安全的」，那么调用它的那一方（客户）就完全没有必要、也没有义务去担心甚至解决被调用方的线程安全问题（可以试想一下 `HashMap` 与 `ConcurrentHashMap`）。
 
@@ -128,7 +153,15 @@
 
 
 
-## 第 3 章   对象的共享
+## 第 3 章   对象的共享（Sharing Objects）
+
+
+
+### 3.3   线程封闭（Thread confinement）
+
+#### 3.3.3   `ThreadLocal` 类
+
+
 
 
 
