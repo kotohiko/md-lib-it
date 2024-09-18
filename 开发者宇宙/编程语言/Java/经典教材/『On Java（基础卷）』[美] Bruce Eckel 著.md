@@ -8,7 +8,7 @@
 
 
 
-![Alfred-Korzybski-books-300x295](./assets/Alfred-Korzybski-books-300x295.jpg)
+<center><a href="https://www.jainebooks.org/books/12313/science-and-sanity-by-alfred-korzybski"><img src="./assets/Alfred-Korzybski-books-300x295.jpg" alt="Alfred-Korzybski-books-300x295" /></a></center>
 
 > 【精彩原文】
 >
