@@ -1,6 +1,6 @@
 
 
-# 1   `Executors`
+## 1   `Executors`
 
 
 
@@ -36,7 +36,7 @@ public class Executors {
 
 
 
-## 1.1   为什么使用 `Executors`？
+### 1.1   为什么使用 `Executors`？
 
 - **简化线程池创建：**`Executors` 提供了方便的方法，无需手动配置线程池的各种参数。
 - **提供常用线程池类型：**`Executors` 提供了多种线程池类型，满足不同场景的需求。
@@ -44,7 +44,7 @@ public class Executors {
 
 
 
-## 1.2   `Executors` 常用方法及对应线程池
+### 1.2   `Executors` 常用方法及对应线程池
 
 | 方法                                       | 返回类型                   | 描述                                                         | 特点                                                         |
 | ------------------------------------------ | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
@@ -79,7 +79,7 @@ public class ExecutorExample {
 
 
 
-## 1.3   注意事项
+### 1.3   注意事项
 
 - **线程池大小**：线程池大小的设置需要根据具体应用场景来调整，过大或过小都会影响性能。
 - **任务类型**：不同的任务类型适合不同的线程池类型。
@@ -87,7 +87,7 @@ public class ExecutorExample {
 
 
 
-## 1.4   深入理解
+### 1.4   深入理解
 
 - `ThreadPoolExecutor`：==`Executors` 中创建的线程池底层都是基于 `ThreadPoolExecutor` 实现的。==
 - **核心参数**：`corePoolSize`、`maximumPoolSize`、`keepAliveTime`、`workQueue` 等参数对线程池的行为有重要影响。
@@ -97,13 +97,13 @@ public class ExecutorExample {
 
 
 
-# 2   `ThreadPoolExecutor`
+## 2   `ThreadPoolExecutor`
 
 Java 中的 `ThreadPoolExecutor` 是一个非常强大的线程池实现，它提供了丰富的配置选项来满足各种不同的需求。
 
 
 
-## 2.1   详解七个参数
+### 2.1   深入理解七个参数
 
 在创建 `ThreadPoolExecutor` 实例时，通常需要指定七个主要参数。下面是这些参数的详细说明：
 
@@ -185,7 +185,7 @@ public class ThreadPoolExample {
 
 
 
-## 2.2   工作流程
+### 2.2   工作流程
 
 `ThreadPoolExecutor` 的工作流程是一个典型的**任务分配和执行**模型，它通过一系列内部机制来处理并发任务。下面详细描述工作流程：
 
@@ -253,7 +253,7 @@ public class ThreadPoolExample {
 
 
 
-## 2.3   总结
+### 2.3   总结
 
 Java 线程池的工作流程可以概括为以下几个阶段：
 
