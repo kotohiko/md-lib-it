@@ -1,6 +1,6 @@
 package kd.iir.pis.business.helper;
 
-import iir.pis.common.constant.PisCommonConstants;
+import kd.iir.pis.common.constant.PisCommonConstants;
 import kd.bos.dataentity.entity.DynamicObject;
 import kd.bos.db.tx.TX;
 import kd.bos.db.tx.TXHandle;

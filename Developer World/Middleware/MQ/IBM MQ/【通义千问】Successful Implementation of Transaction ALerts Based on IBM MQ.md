@@ -94,7 +94,7 @@ By following this design and workflow, you can create a robust and reliable syst
     - 一个专门的通知服务将作为消息消费者，订阅存放交易消息的队列。
     - 该通知服务将持续监控队列中的新消息。
     - 收到新消息后，服务将解析消息内容，并准备向手机APP发送提醒。
-4. **手机APP推送通知**：
+4. **手机 APP 推送通知**：
     - 通知服务将使用推送通知服务（例如 Android 的 Firebase Cloud Messaging (FCM) 或 iOS 的 Apple Push Notification service (APNs)）将提醒发送到用户的手机APP。
     - 通知服务需要具备与推送通知服务交互所需的凭证和权限。
     - 消息内容将根据推送通知服务的要求进行格式化，并发送到用户的设备。

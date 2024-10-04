@@ -2,8 +2,8 @@ package kd.iir.pis.business.auth;
 
 import com.alibaba.fastjson.JSON;
 import com.alibaba.fastjson.JSONObject;
-import iir.pis.common.constant.PisCommonConstants;
-import iir.pis.common.utils.SysParamUtil;
+import kd.iir.pis.common.constant.PisCommonConstants;
+import kd.iir.pis.common.utils.SysParamUtil;
 import kd.bos.dc.api.model.Account;
 import kd.bos.logging.Log;
 import kd.bos.logging.LogFactory;
