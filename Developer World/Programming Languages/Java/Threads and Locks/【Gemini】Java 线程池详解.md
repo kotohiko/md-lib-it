@@ -1,10 +1,10 @@
 
 
-## 1   `Executors`
+## 1   `Executors` 详解
 
 
 
-`Executors` 是一个工具类，提供了一系列静态工厂方法，用于创建不同类型的线程池。
+`Executors` 是 Java 并发编程中一个非常重要的工具类，它位于 `java.util.concurrent`（JUC）包下。==它的主要作用是提供了一系列静态工厂方法，用于创建不同类型的线程池。== 这些线程池可以帮助我们管理线程的创建、执行和销毁，从而简化并发编程的复杂性。
 
 ```java
 package java.util.concurrent;
@@ -22,62 +22,20 @@ public class Executors {
 }
 ```
 
-这些线程池都实现了 `ExecutorService` 接口，提供了管理和执行异步任务的功能。
-
-实现 `ExecutorService` 接口的类都包括：
-
-| 名称                       | 声明                                                         | 简介                                                         | 版本 |
-| -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ | ---- |
-| `AbstractExecutorService`  | `public abstract class AbstractExecutorService implements ExecutorService {...}` | `AbstractExecutorService` 是 Java 并发包 `java.util.concurrent` 中的一个抽象类，它实现了 `ExecutorService` 接口。这个抽象类提供了一些默认实现的方法，使得开发者在创建自定义的 `ExecutorService` 实现时可以更加容易地遵循 `ExecutorService` 的规范。<br>`ExecutorService` 是一个更高级的接口，它扩展了 `Executor` 接口，并添加了管理终止和生成 `Future` 以便跟踪进度的功能。`ExecutorService` 提供了生命周期管理的方法，如关闭线程池、等待所有任务完成等。 | 5    |
-| `ForkJoinPool`             | `public class ForkJoinPool extends AbstractExecutorService {...}` | 是 Java 7 引入的一个并行执行框架，主要用于处理大量的小任务，通过将大任务拆分为更小的子任务，并利用多个处理器核心来并行处理这些子任务，从而提高程序的执行效率。 | 7    |
-| `ScheduledExecutorService` | `public interface ScheduledExecutorService extends ExecutorService {...}` | `ScheduledExecutorService` 是 JUC 中的一个接口，它继承自 `ExecutorService` 接口。`ScheduledExecutorService` 提供了定时和周期性执行任务的功能，类似于传统的 `Timer` 和 `TimerTask`，但提供了更强大的功能和更好的灵活性。 | 5    |
-| `ThreadPoolExecutor`       | `public class ThreadPoolExecutor extends AbstractExecutorService {...}` |                                                              |      |
-|                            |                                                              |                                                              |      |
-
-
-
 ### 1.1   为什么使用 `Executors`？
 
-- **简化线程池创建：**`Executors` 提供了方便的方法，无需手动配置线程池的各种参数。
-- **提供常用线程池类型：**`Executors` 提供了多种线程池类型，满足不同场景的需求。
-- **隐藏底层复杂性：**`Executors` 封装了线程池的创建和管理细节，让开发者可以更专注于业务逻辑。
-
-
+- **简化线程池创建：**`Executors` 提供了多种预配置的线程池，如 `newFixedThreadPool`、`newCachedThreadPool` 等，可以直接使用，无需手动配置线程池参数。
+- **提高性能：** 线程池可以重用线程，避免频繁创建和销毁线程带来的性能开销。
+- **管理线程：** 线程池可以控制线程的最大并发数，防止系统资源耗尽。
 
 ### 1.2   `Executors` 常用方法及对应线程池
 
 | 方法                                       | 返回类型                   | 描述                                                         | 特点                                                         |
 | ------------------------------------------ | -------------------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
-| `newFixedThreadPool(int nThreads)`         | `ExecutorService`          | 创建一个固定大小的线程池。核心线程数和最大线程数相等，超出部分的任务会在队列中等待。 | 线程数固定，适合处理稳定的任务负载。<br>任务队列==无界==，可以无限排队。<br/>适用于==负载均衡==的场景。 |
+| `newFixedThreadPool(int nThreads)`         | `ExecutorService`          | 创建一个固定大小的线程池。核心线程数和最大线程数相等，超出部分的任务会在队列中等待。 | 线程数固定，适合处理==稳定的任务负载==。<br>任务队列==无界==，可以无限排队。<br/>适用于==负载均衡==的场景。 |
 | `newCachedThreadPool()`                    | `ExecutorService`          | 创建一个可缓存的线程池。如果线程池中的线程数量超过了处理需求，会回收空闲线程，如果任务数量增加，会创建新的线程。 | 线程数动态调整，适合处理==突发性==的任务。<br/>适用于执行很多短期异步任务的场景 |
 | `newSingleThreadExecutor()`                | `ExecutorService`          | 创建一个只有一个线程的线程池。保证任务按照顺序执行。         | 只有一个线程，适合按顺序执行任务。<br/>适用于==串行执行==任务的场景。 |
 | `newScheduledThreadPool(int corePoolSize)` | `ScheduledExecutorService` | 创建一个支持定时及周期性任务执行的线程池。                   | 支持定时和周期性任务。<br/>适用于需要定时执行任务的场景，如定时备份、定时清理等。 |
-
-使用示例
-
-```java
-import java.util.concurrent.*;
-
-public class ExecutorExample {
-    public static void main(String[] args) {
-        // 创建固定大小的线程池
-        ExecutorService fixedThreadPool = Executors.newFixedThreadPool(5);
-        for (int i = 0; i < 10; i++) {
-            fixedThreadPool.execute(() -> {
-                System.out.println(Thread.currentThread().getName() + " is running");
-                try {
-                    Thread.sleep(1000);
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
-            });
-        }
-        fixedThreadPool.shutdown();
-    }
-}
-```
-
-
 
 ### 1.3   注意事项
 
