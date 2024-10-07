@@ -20,7 +20,7 @@
 
 ### 3   代码结构
 
-#### 3.1   核心实体类设计
+#### 3.1   核心 Entity 类设计
 ```java
 @Entity
 public class Account {
@@ -110,7 +110,7 @@ public class TransferService {
 
 #### 3.4   并发控制
 
-在高并发场景下，我们可以使用 **Java 并发包**中的锁机制，保证同一个账户的并发修改不发生冲突。这里可以使用账户号作为唯一标识，通过 `ConcurrentHashMap` 来管理账户锁：
+在高并发场景下，我们可以使用 JUC 中的锁机制，保证同一个账户的并发修改不发生冲突。这里可以使用账户号作为唯一标识，通过 `ConcurrentHashMap` 来管理账户锁：
 
 ```java
 @Component
@@ -140,6 +140,7 @@ private AccountLockManager lockManager;
 
 @Transactional(rollbackFor = Exception.class)
 public void transfer(String fromAccountNumber, String toAccountNumber, BigDecimal amount) {
+    
     ReentrantLock fromLock = lockManager.getLock(fromAccountNumber);
     ReentrantLock toLock = lockManager.getLock(toAccountNumber);
 
@@ -167,17 +168,17 @@ public void transfer(String fromAccountNumber, String toAccountNumber, BigDecima
 }
 ```
 
-### 4. 事务管理
+### 4   事务管理
 
 - 使用 Spring 的 `@Transactional` 注解管理事务，确保在转账过程中，如果任意步骤失败，整个事务回滚。
 - 如果发生并发问题或账户余额不足等异常，可以抛出异常，确保事务一致性。
 
-### 5. 设计模式
+### 5   设计模式
 
 - **模板方法模式**：将转账逻辑中的核心步骤抽取为通用方法，通过模板方法模式封装具体的账户扣减、账户增加等操作。方便未来扩展，如支持不同的支付方式（银行卡、信用卡等）。
 - **工厂模式**：如果未来要扩展不同类型的转账方式（如国内转账、国际转账），可以通过工厂模式生成具体的转账服务类。
 
-### 6. 扩展性和改进
+### 6   扩展性和改进
 
 - 可以引入**消息队列**来处理高并发下的异步操作，提升系统性能。
 - 使用**分布式锁**来进一步增强锁的粒度和跨节点的并发控制，特别是在微服务架构下。
