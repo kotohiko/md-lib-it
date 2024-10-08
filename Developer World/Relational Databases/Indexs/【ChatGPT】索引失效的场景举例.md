@@ -6,6 +6,7 @@
 例如，假设有一个复合索引 `INDEX(col1, col2)`，查询语句 `SELECT * FROM table WHERE col2 = 'value'` 将不会使用该索引，因为没有包含 `col1`。
 
 ### `WHERE` 条件中使用函数或表达式
+
 在 `WHERE` 条件中对索引列使用函数或表达式，会导致索引失效，因为数据库无法利用索引的有序性。
 
 例如：`SELECT * FROM table WHERE UPPER(col1) = 'VALUE'` 会导致索引失效。
