@@ -2,7 +2,7 @@
 
 ### 1.1   概述
 
-序列化是将 Java 对象转换为==字节流==的过程，这样对象可以通过==网络传输==、==远程调用==、分布式系统中数据交换、==持久化存储==（如保存到数据库或文件）或者==缓存==。Java 提供了 `java.io.Serializable` 接口来支持序列化，只要类实现了这个接口，就可以将该类的对象进行序列化。
+序列化是将 Java 对象转换为==字节流==的过程，这样对象可以通过==网络传输==（如 JSON）、==远程调用==、分布式系统中数据交换（如字节流）、==持久化存储==（如保存到数据库或 XML 文件）或者==缓存==。Java 提供了 `java.io.Serializable` 接口来支持序列化，只要类实现了这个接口，就可以将该类的对象进行序列化。
 
 而反序列化则是将字节流重新转换为对象的过程，即从存储中读取数据并重新创建对象。
 
@@ -131,6 +131,8 @@ public class DeserializeExample {
             }
 ```
 
+
+
 ### 1.5   `serialVersionUID` 的用处
 
 ```java
@@ -148,6 +150,10 @@ private static final long serialVersionUID = 1L;
 正是因为类的结构变了，生成的 “指纹” 变了，那么 `serialVersionUID` 也就不一致了。
 
 总而言之，`serialVersionUID` 就是起到的验证的作用。
+
+
+
+### 1.6   静态变量与序列化
 
 另外值得一提的是，Java 序列化不包含静态变量。
 
@@ -214,7 +220,59 @@ public class StaticVarSerialTest implements Serializable {
 666
 ```
 
+静态变量不参与序列化的原因在于**静态变量属于类本身，而不属于类的实例**。序列化的目的是保存对象的状态，而静态变量是共享的类级别数据，它们的状态由类定义，因此不随具体对象的状态变化进行序列化和反序列化。
 
+#### 1.6.1   静态变量的特性
+
+在 Java 中，静态变量（即使用 `static` 关键字声明的变量）属于类，而不是某个特定的对象。它们在类加载时被初始化，并且所有该类的实例共享同一个静态变量。因此，静态变量的生命周期和类的生命周期相关，而不是对象的生命周期。
+
+#### 1.6.2   序列化机制概述
+
+Java 中的序列化机制是通过 `ObjectOutputStream` 和 `ObjectInputStream` 类来实现的。`ObjectOutputStream` 只会序列化实例变量（非 `static` 的字段）。在 `ObjectOutputStream` 类的源码中，实际上是通过反射获取到对象的字段，并且只处理那些非静态字段。
+
+#### 1.6.3   通过源码解释
+
+##### `ObjectOutputStream` 序列化字段的源码
+
+`ObjectOutputStream` 序列化对象时使用了 `ObjectStreamClass`，这个类包含了与类相关的元数据。具体来看，`ObjectStreamClass` 在处理类的字段时，会跳过静态字段。以下是源码中的关键部分：
+
+```java
+private void writeObject0(Object obj, boolean unshared)
+        throws IOException {
+    // 略去一些前置检查
+    ObjectStreamClass desc = ObjectStreamClass.lookup(obj.getClass());
+    // 获取所有非静态的字段
+    desc.writeObject(obj, this, unshared);
+    // 其他处理代码
+}
+```
+
+`ObjectStreamClass.lookup()` 获取类的元数据，其中包括对象的所有字段。在这些字段的处理过程中，静态变量被自动排除。
+
+##### `ObjectStreamClass` 中处理字段的代码
+
+在 `ObjectStreamClass` 类中，具体会通过反射 API 获取类的字段，而 `Field.getModifiers()` 可以返回字段的修饰符。使用 `Modifier.isStatic()` 来检查字段是否是静态的：
+
+```java
+Field[] fields = cl.getDeclaredFields();
+for (Field field : fields) {
+    if (Modifier.isStatic(field.getModifiers())) {
+        // 跳过静态字段
+        continue;
+    }
+    // 处理非静态字段
+}
+```
+
+因此，`ObjectStreamClass` 在处理字段时，会自动跳过所有静态变量。
+
+#### 1.6.4   总结
+
+- 静态变量属于类级别的数据，而不是对象级别的数据，序列化仅保存对象的状态，不保存类的状态。
+- `ObjectOutputStream` 在序列化对象时通过反射获取类的所有字段，但会跳过静态变量，这是因为静态字段属于类，而不属于特定实例。
+- 反序列化时，静态变量的值是当前 JVM 中类的静态字段值，而不是序列化时保存的值。
+
+因此，静态变量不参与序列化是因为它们的本质属性与序列化的目标（保存对象的状态）无关。
 
 
 
@@ -344,6 +402,8 @@ Serialized data is saved in user.ser
 ```
 Deserialized User: User{username='Alice', password='null'}
 ```
+
+
 
 ### 2.3   总结
 
