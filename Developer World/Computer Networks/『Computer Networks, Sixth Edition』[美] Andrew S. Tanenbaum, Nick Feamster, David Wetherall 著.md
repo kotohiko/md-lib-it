@@ -9,7 +9,7 @@
 >     -   LAN：Local Area Network，本地局域网。
 >     -   WLAN：Wireless Local Area Network，无线本地局域网。
 >     -   IEEE：Institute of Electrical and Electronics Engineers，电器电子工程师学会。
-> -   本文档章节标题格式采用【经典模式】
+> -   本文档章节标题格式采用「经典模式」
 
 
 
