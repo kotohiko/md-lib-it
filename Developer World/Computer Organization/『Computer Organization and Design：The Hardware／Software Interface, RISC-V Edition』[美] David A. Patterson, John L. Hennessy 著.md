@@ -6,17 +6,18 @@
 
 ## 1.1   Introduction
 
-Welcome to this book! We’re delighted to have this opportunity to convey[^1.1-1] the excitement of the world of computer systems. This is not a dry and dreary[^1.1-2] field, where progress is glacial[^1.1-3] and where new ideas atrophy[^1.1-4] from neglect[^1.1-5]. No! Computers are the product of the incredibly vibrant[^1.1-6] information technology industry, all aspects of which are responsible for almost 10% of the gross national product of the United States, and whose economy has become dependent in part on the rapid improvements in information technology promised by Moore’s Law. ==This unusual industry embraces innovation at a breath-taking rate.== In the last 30 years, there have been a number of new computers whose introduction appeared to revolutionize the computing industry; these revolutions were cut short only because someone else built an even better computer.
+Welcome to this book! We’re delighted to have this opportunity to **convey**[^1.1-1] the excitement of the world of computer systems. This is not a dry and **dreary**[^1.1-2] field, where progress is **glacial**[^1.1-3] and where new ideas **atrophy**[^1.1-4] from **neglect**[^1.1-5]. No! Computers are the product of the incredibly **vibrant**[^1.1-6] information technology industry, all aspects of which are responsible for almost 10% of the gross national product of the United States, and whose economy has become dependent in part on the rapid improvements in information technology promised by Moore’s Law. ==This unusual industry embraces innovation at a breath-taking rate.== In the last 30 years, there have been a number of new computers whose introduction appeared to revolutionize the computing industry; these revolutions were cut short only because someone else built an even better computer.
 
-This race to innovate has led to unprecedented[^1.1-7] progress since the inception[^1.1-8] of electronic computing in the late 1940s. ==Had the transportation industry kept pace with the computer industry, for example, today we could travel from New York to London in a second for a penny.== Take just a moment to contemplate[^1.1-9] how such an improvement would change society—living in Tahiti[^1.1-10] while working in San Francisco, going to Moscow for an evening at the Bolshoi Ballet[^1.1-11]—and you can appreciate the implications[^1.1-12] of such a change.
+This race to innovate has led to **unprecedented**[^1.1-7] progress since the **inception**[^1.1-8] of electronic computing in the late 1940s. ==Had the transportation industry kept pace with the computer industry, for example, today we could travel from New York to London in a second for a penny.== Take just a moment to **contemplate**[^1.1-9] how such an improvement would change society—living in **Tahiti**[^1.1-10] while working in San Francisco, going to Moscow for an evening at the **Bolshoi Ballet**[^1.1-11]—and you can appreciate the **implications**[^1.1-12] of such a change.
 
-Computers have led to a third revolution for civilization, with the information revolution taking its place alongside the agricultural and industrial revolutions. The resulting multiplication[^1.1-13] of humankind’s intellectual strength and reach naturally has affected our everyday lives profoundly[^1.1-14] and changed the ways in which the search for new knowledge is carried out. There is now a new vein[^1.1-15] of scientific investigation[^1.1-16], with computational scientists joining theoretical and experimental scientists in the exploration of new frontiers in astronomy, biology, chemistry, and physics, among others. 
+Computers have led to a third revolution for civilization, with the information revolution taking its place alongside the agricultural and industrial revolutions. The resulting **multiplication**[^1.1-13] of humankind’s intellectual strength and reach naturally has affected our everyday lives **profoundly**[^1.1-14] and changed the ways in which the search for new knowledge is carried out. There is now a new **vein**[^1.1-15] of scientific **investigation**[^1.1-16], with computational scientists joining theoretical and experimental scientists in the exploration of new frontiers in astronomy, biology, chemistry, and physics, among others.
 
-The computer revolution continues. Each time the cost of computing improves by another factor of 10, the opportunities for computers multiply. Applications that were economically infeasible suddenly become practical. In the recent past, the following applications were “computer science fiction.”
+The computer revolution continues. Each time the cost of computing improves by another factor of 10, the opportunities for computers multiply. Applications that were economically **infeasible**[^1.1-17] suddenly become practical. In the recent past, the following applications were “computer science fiction.”
 
-- *Computers in automobiles*: Until microprocessors improved dramatically in price and performance in the early 1980s, computer control of cars was ludicrous. Today, computers reduce pollution, improve fuel efficiency via engine controls, and increase safety through blind spot warnings, lane departure warnings, moving object detection, and air bag inflation to protect occupants in a crash.
+- *Computers in automobiles*: Until microprocessors improved **dramatically**[^1.1-18] in price and performance in the early 1980s, computer control of cars was **ludicrous**[^1.1-19]. Today, computers reduce pollution, improve fuel efficiency via engine controls, and increase safety through blind spot warnings, **lane**[^1.1-20] **departure**[^1.1-21] warnings, moving object detection, and air bag **inflation**[^1.1-22] to protect **occupants**[^1.1-23] in a crash.
 - *Cell phones*: Who would have dreamed that advances in computer systems would lead to more than half of the planet having mobile phones, allowing person-to-person communication to almost anyone anywhere in the world?
-- *Human genome project*: The cost of computer equipment to map and analyze human DNA sequences was hundreds of millions of dollars. It’s unlikely that anyone would have considered this project had the computer costs been 10 to 100 times higher, as they would have been 15 to 25 years earlier. Moreover, costs continue to drop; you will soon be able to acquire your own genome, allowing medical care to be tailored to you.
+- *Human **genome***[^1.1-24] *project*: The cost of computer equipment to map and analyze human DNA sequences was hundreds of millions of dollars. It’s unlikely that anyone would have considered this project had the computer costs been 10 to 100 times higher, as they would have been 15 to 25 years earlier. Moreover, costs continue to drop; you will soon be able to acquire your own genome, allowing medical care to be tailored to you.
+
 - *World Wide Web*: Not in existence at the time of the first edition of this book, the web has transformed our society. For many, the web has replaced libraries and newspapers.
 - *Search engines*: As the content of the web grew in size and in value, finding relevant information became increasingly important. Today, many people rely on search engines for such a large part of their lives that it would be a hardship to go without them.
 
@@ -41,6 +42,27 @@ Clearly, advances in this technology now affect almost every aspect of our socie
 > [^1.1-15]: [sing.] **vein (of sth)** an amount of particular quality or feature in sth
 >
 > [^1.1-16]:a scientific or academic examination of the facts of a subject or problem
+>
+> [^1.1-17]:not possible to do easily or conveniently
+> [^1.1-18]:very suddenly and to a very great and often surprising degree
+> [^1.1-19]:unreasonable; that you cannot take seriously [SYN] absurd, ridiculous
+> [^1.1-20]:a section of a wide road, that is marked by painted white lines, to keep lines of traffic separate
+> [^1.1-21]:[countable] an action that is different from what is usual or expected
+> [^1.1-22]:the act or process of filling sth with air or gas
+> [^1.1-23]:a person who is in a vehicle, seat, etc. at a particular time
+> [^1.1-24]:(*biology*) the complete set of GENES in a cell or living thing
+> [^1.1-25]:
+> [^1.1-26]:
+>
+> 
+>
+> 
+>
+> 
+>
+> 
+>
+> 
 >
 > 
 
