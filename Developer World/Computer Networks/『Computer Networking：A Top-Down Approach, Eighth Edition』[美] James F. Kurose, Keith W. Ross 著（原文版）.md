@@ -2,7 +2,7 @@
 
 
 
-Today’s Internet is **arguably**[^1-1] the largest engineered system ever created by mankind, with hundreds of millions of connected computers, communication links, and switches; with billions of users who connect via laptops, tablets, and smartphones; and with an array of new Internet-connected “things” including game consoles, surveillance systems, watches, eye glasses, thermostats, and cars. Given that the Internet is so large and has so many diverse components and uses, is there any hope of understanding how it works? Are there guiding principles and structure that can provide a foundation for understanding such an amazingly large and complex system? And if so, is it possible that it actually could be both interesting and fun to learn about computer networks? Fortunately, the answer to all of these questions is a resounding YES! Indeed, it’s our aim in this book to provide you with a modern introduction to the dynamic field of computer networking, giving you the principles and practical insights you’ll need to understand not only today’s networks, but tomorrow’s as well.
+Today’s Internet is **arguably**[^1-1] the largest engineered system ever created by mankind, with hundreds of millions of connected computers, communication links, and switches; with billions of users who connect via laptops, **tablets**[^1-2], and smartphones; and with an **array**[^1-3] of new Internet-connected “things” including game **consoles**[^1-4], surveillance systems, watches, eye glasses, thermostats, and cars. Given that the Internet is so large and has so many diverse components and uses, is there any hope of understanding how it works? Are there guiding principles and structure that can provide a foundation for understanding such an amazingly large and complex system? And if so, is it possible that it actually could be both interesting and fun to learn about computer networks? Fortunately, the answer to all of these questions is a resounding YES! Indeed, it’s our aim in this book to provide you with a modern introduction to the dynamic field of computer networking, giving you the principles and practical insights you’ll need to understand not only today’s networks, but tomorrow’s as well.
 
 This first chapter presents a broad overview of computer networking and the Internet. Our goal here is to paint a broad picture and set the context for the rest of this book, to see the forest through the trees. We’ll cover a lot of ground in this introductory chapter and discuss a lot of the pieces of a computer network, without losing sight of the big picture.
 
@@ -12,7 +12,16 @@ After having completed this overview of the edge and core of a computer network,
 
 
 
-> [^1-1]:used (often before a comparative or superlative adjective) when you are stating an opinion that you believe you could give reasons to support
+> [^1-1]: used (often before a comparative or superlative adjective) when you are stating an opinion that you believe you could give reasons to support
+> [^1-2]: a small computer that is easy to carry, with a large TOUCH SCREEN and usually without a physical keyboard.
+> [^1-3]: [usually sing.] a group or collection of things or people, often one that is large or impressive
+> [^1-4]: a piece of electronic equipment for playing games on
+>
+> 
+>
+> 
+>
+> 
 
 ## 1.1   What Is the Internet?
 
