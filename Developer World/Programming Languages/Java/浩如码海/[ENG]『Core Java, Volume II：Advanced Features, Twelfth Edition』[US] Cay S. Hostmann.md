@@ -75,7 +75,7 @@ Let us have another look at the example. The stream and `parallelStream` methods
 In the example in Listing 1.1, the stream is created with the stream or `parallelStream` method. The filter method transforms it, and
 count is the terminal operation.
 
-【Listing 1.1 `streams/CountLongWords.java`】
+【**Listing 1.1** `streams/CountLongWords.java`】
 
 ```java
 package streams;
