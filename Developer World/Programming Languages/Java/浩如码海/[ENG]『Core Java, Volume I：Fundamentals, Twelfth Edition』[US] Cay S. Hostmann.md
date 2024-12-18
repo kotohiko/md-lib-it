@@ -102,8 +102,33 @@ In the following sections, you will see the tools that the Java concurrency fram
 
 ### 12.6.1 `Callables` and `Futures`
 
+A `Runnable` encapsulates a task that runs asynchronously; you can think of it as an asynchronous method with ==no parameters and no return value.== A `Callable` is similar to a `Runnable`, ==but it returns a value.== The `Callable` interface is a parameterized type, with a single method `call`.
+
+```java
+public interface Callable<V> {
+	V call() throws Exception;
+}
+```
+
+The type parameter is the type of the returned value. For example, =a `Callable<Integer>` represents an asynchronous computation that eventually returns an `Integer` object.
+
+==A `Future` holds the *result* of an asynchronous computation.== You start a computation, give someone the `Future` object, and forget about it. The owner of the `Future` object can obtain the result when it is ready.
+
+The `Future<V>` interface has the following methods:
+
+```java
+V get()
+V get(long timeout, TimeUnit unit)
+void cancel(boolean mayInterrupt)
+boolean isCancelled()
+boolean isDone()
+```
+
 
 
 ## 12.7 Asynchronous Computations
 
-So far, our approach to concurrent computation has been to break up a task, and then wait until all pieces have completed. But waiting is not always a good idea. In the following sections, you will see how to implement waitfree, or *asynchronous*, computations.
+So far, our approach to concurrent computation has been to break up a task, and then ==wait until all pieces have completed.== But waiting is not always a good idea. In the following sections, you will see how to implement waitfree, or *asynchronous*, computations.
+
+### 12.7.1 Competable Futures
+
