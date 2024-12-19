@@ -1,6 +1,34 @@
+# Chapter 6. Interfaces, Lambda Expressions, and Inner Classes
+
+In this chapter
+
+- [6.1 Interfaces](##6.1 Interfaces)
+- 6.2 Lambda Expressions
+- 6.3 Inner Classes
+- 6.4 Service Loaders
+- 6.5 Proxies
 
 
 
+You have now learned about classes and inheritance, the key concepts of ==object-oriented programming== in Java. This chapter shows you several advanced techniques that are commonly used. Despite their less obvious **nature**[^6-1], you will need to master them to complete your Java tool **chest**[^6-2].
+
+The first technique, called *interfaces*, is a way of describing *what* classes should do, without specifying *how* they should do it. A class can *implement* one or more interfaces. You can then use objects of these implementing classes whenever **conformance**[^6-3] to the interface is required. After discussing interfaces, we move on to *lambda expressions*, a **concise**[^6-4] way to create blocks of code that can be executed at a later point in time. Using lambda expressions, you can express code that uses callbacks or variable behavior in an elegant and concise fashion.
+
+We then discuss the mechanism of *inner classes*. Inner classes are technically somewhat complex—they are defined inside other classes, and their methods can access the fields of the surrounding class. Inner classes are useful when you design collections of cooperating classes.
+
+This chapter **concludes**[^6-5] with a discussion of *proxies*, ==objects that implement **arbitrary**[^6-6] interfaces.== A proxy is a very **specialized**[^6-7] construct that is useful for building system-level tools. You can safely skip that section on first reading.
+
+> [^6-1]:[sing.] the basic qualities of a thing
+> [^6-2]:a large strong box, usually made of wood, used for storing things in and/or moving them from one place to another
+> [^6-3]:**conformance (to/with sth)** (formal) the fact of following the rules or standards of sth
+> [^6-4]:giving only the information that is necessary and important, using few words
+> [^6-5]:[intransitive, transitive] (*formal*) to come to an end; to bring sth to an end
+> [^6-6]:(of an action, a decision, a rule, etc.) not seeming to be based on a reason, system or plan and sometimes seeming unfair
+> [^6-7]:designed or developed for a particular purpose or area of knowledge
+
+
+
+## 6.1 Interfaces
 
 
 
