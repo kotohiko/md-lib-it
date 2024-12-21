@@ -1,3 +1,50 @@
+
+
+
+
+# Chapter 1. An Introduction to Java
+
+In this chapter
+
+- [1.1 Java as a Programming Platform](##1.1 Java as a Programming Platform)
+- 1.2 The Java “White Paper” Buzzwords
+- 1.3 Java Applets and the Internet
+- 1.4 A Short History of Java
+- 1.5 Common Misconceptions about Java
+
+
+
+The first release of Java in 1996 generated an incredible amount of excitement, not just in the computer press, but in mainstream media such as the *New York Times*, the *Washington Post*, and *BusinessWeek*. Java has the distinction of being the first and only programming language that had a tenminute story on **National Public Radio**[^1-1]. A $100,000,000 **venture**[^1-2] capital fund was set up solely for products using a *specific* computer language. I hope you will enjoy a brief history of Java that you will find in this chapter.
+
+> [^1-1]:an American [public broadcasting](https://en.wikipedia.org/wiki/Public_broadcasting) organization headquartered in [Washington, D.C.](https://en.wikipedia.org/wiki/Washington,_D.C.), with its NPR West headquarters in [Culver City, California](https://en.wikipedia.org/wiki/Culver_City,_California).
+> [^1-2]:a business project or activity, especially one that involves taking risks
+
+## 1.1 Java as a Programming Platform
+
+In the first edition of this book, my coauthor Gary Cornell and I had this to write about Java:
+
+“As a computer language, Java’s **hype**[^1.1-1] is overdone: Java is certainly a *good* programming language. There is no doubt that it is one of the better languages available to serious programmers. We think it could *potentially* have been a great programming language, but it is probably too late for that. Once a language is out[^1.1-2] in the field, the ugly reality of compatibility[^1.1-3] with existing code sets in.”
+
+Our editor got a lot of flack for this paragraph from someone very high up at Sun Microsystems, the company that originally developed Java. The Java language has a lot of nice features that we will examine in detail later in this chapter. It has its share of warts, and some of the newer additions to the language are not as elegant as the original features because of compatibility requirements.
+
+
+
+> [^1.1-1]:advertisements and discussion in the media telling the public about a product and about how good or important it is
+> [^1.1-2]:available to everyone; known to everyone
+> [^1.1-3]:the ability of machines, especially computers, and computer programs to be used together
+>
+> 
+
+
+
+
+
+
+
+
+
+
+
 # Chapter 6. Interfaces, Lambda Expressions, and Inner Classes
 
 In this chapter
