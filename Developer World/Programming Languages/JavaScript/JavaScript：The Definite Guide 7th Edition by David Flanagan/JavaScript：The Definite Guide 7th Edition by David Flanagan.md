@@ -1,7 +1,8 @@
 # Chapter 1. Introduction to JavaScript
 
-JavaScript is the programming language of the web. The overwhelming majority of websites use JavaScript, and all modern web browsers—on desktops, **tablets**[^1-1], and phones—include JavaScript interpreters, making JavaScript the most-deployed programming language in history. Over the last decade, Node.js has enabled JavaScript programming outside of web browsers, and the **dramatic**[^1-2] success of Node means that JavaScript is now also the most-used programming language among
-software developers. Whether you’re starting **from scratch**[^1-3] or are already using JavaScript professionally, this book will help you master the language.
+
+
+JavaScript is the programming language of the web. The overwhelming majority of websites use JavaScript, and all modern web browsers—on desktops, **tablets**[^1-1], and phones—include JavaScript interpreters, making JavaScript the most-deployed programming language in history. Over the last decade, Node.js has enabled JavaScript programming outside of web browsers, and the **dramatic**[^1-2] success of Node means that JavaScript is now also the most-used programming language among software developers. Whether you’re starting **from scratch**[^1-3] or are already using JavaScript professionally, this book will help you master the language.
 
 If you are already familiar with other programming languages, it may help you to know that JavaScript is a **high-level**, **dynamic**, **interpreted** programming language that is well-suited to object-oriented and functional programming styles. JavaScript’s variables are untyped. Its syntax is **loosely**[^1-4] based on Java, but the languages are otherwise unrelated. JavaScript **derives**[^1-5] its first-class functions from Scheme and its prototype-based inheritance from the little-known language Self. But you do not need to know any of those languages, or be familiar with those terms, to use this book and learn JavaScript.
 
@@ -21,7 +22,7 @@ The name “JavaScript” is quite misleading. Except for a superficial syntacti
 
 
 >   [^1-1]: (*also* **Tablet PC<sup>TM</sup>**) a small computer that is easy to carry, with a large TOUCH SCREEN and usually without a physical keyboard
->   [^1-2]: (of a change, an event, etc.) sudden, very great and ofter surprising
+>   [^1-2]: (of an event or circumstance) sudden and striking.
 >   [^1-3]: **from scratch**: without any previous preparation or knowledge
 >   [^1-4]: in a way that is not exact
 >   [^1-5]: (*formal*) to get sth from sth
