@@ -1,5 +1,7 @@
 # Quick Navigation
 
+
+
 RocketMQ official site：https://rocketmq.apache.org/
 
 RocketMQ GitHub link：https://github.com/apache/rocketmq
@@ -12,17 +14,19 @@ RocketMQ docs v4.x：https://rocketmq.apache.org/docs/4.x/
 
 # Introduction
 
+
+
 ## Why choose RocketMQ
 
 ### Why RocketMQ
 
 > During the early stages of RocketMQ's development at Alibaba, we utilized it for a multitude of purposes, including asynchronous communications, search, social networking activity flows, data pipelines, and trade processes. As our trade business grew, we noticed that the messaging cluster was under increasing pressure.
 
-#### **【TOPIC 1】RocketMQ's original**
+#### **[TOPIC 1] RocketMQ's original**
 
 📖 Answer via **Google AI Overviews** |🧑‍⚖️ Verified by **Qwen3.5-Plus**
 
-Apache RocketMQ, originally developed by Alibaba in 2012 to handle **massive e-commerce traffic**, was open-sourced the same year and became an Apache **Top-Level Project** in 2017. It evolved from a 2012 internal messaging solution into a cloud-native platform (v5.0 in 2022) supporting streaming, IoT, and high-reliability financial transactions. 
+Apache RocketMQ, originally developed by Alibaba in 2012 to handle **massive e-commerce traffic**, was open-sourced the same year and became an Apache **Top-Level Project** in 2017. It evolved from a 2012 internal messaging solution into a cloud-native platform (v5.0 in 2022) supporting streaming, IoT, and high-reliability financial transactions.
 
 **Key Historical Milestones**
 
@@ -36,11 +40,11 @@ Apache RocketMQ, originally developed by Alibaba in 2012 to handle **massive e-c
 
 - **1.0–3.0 (Internals & Open Source):** Polished within Alibaba, supporting massive traffic during the "Double 11" Shopping Festival.
 - **4.0 (Cloud & Standardization):** Focused on maturing as an Apache project and expanding its user base beyond Alibaba.
-- **5.0 (Cloud Native):** Shifted towards a stateless Proxy layer and independent client repositories (Java/C++/Go/Rust) for better cloud integration, as detailed in the [GitHub repository](https://github.com/apache/rocketmq-clients). 
+- **5.0 (Cloud Native):** Shifted towards a stateless Proxy layer and independent client repositories (Java/C++/Go/Rust) for better cloud integration, as detailed in the [GitHub repository](https://github.com/apache/rocketmq-clients).
 
-Today, RocketMQ serves as a foundational component for microservices and big data in many industries. 
+Today, RocketMQ serves as a foundational component for microservices and big data in many industries.
 
-#### 【TOPIC 2】RocketMQ's core use cases
+#### [TOPIC 2] RocketMQ's core use cases
 
 📖 Answer via **Gemini 3**
 
@@ -99,11 +103,11 @@ Since its inception, Apache RocketMQ has been widely adopted by enterprise devel
 
 The following table shows the comparison between RocketMQ, ActiveMQ and Kafka.
 
-| Messaging Product | Client SDK           | Protocol and Specification                           | Ordered Message                                              | Scheduled Message | Batched Message                | Broadcast Message | Message Filter                                          | Server Triggered Redelivery | Message Storage               | Message Retroactive       | Message Priority | High Availability and Failover         | Message Track | Configuration                                                | Management and Operation Tools                         |
-| ----------------- | -------------------- | ---------------------------------------------------- | ------------------------------------------------------------ | ----------------- | ------------------------------ | ----------------- | ------------------------------------------------------- | --------------------------- | ----------------------------- | ------------------------- | ---------------- | -------------------------------------- | ------------- | ------------------------------------------------------------ | ------------------------------------------------------ |
-| ActiveMQ          | Java, .NET, C++ etc. | Push model, support OpenWire, STOMP, AMQP, MQTT, JMS | Exclusive Consumer or Exclusive Queues can ensure ordering   | Supported         |                                |                   |                                                         |                             |                               |                           |                  |                                        |               | The default configuration is low level, user need to optimize the configuration parameters |                                                        |
-| Kafka             | Java, Scala etc.     | Pull model, support TCP                              | Ensure ordering of messages within a partition               | Not Supported     | Supported, with async producer | Not Supported     | Supported, you can use Kafka Streams to filter messages | Not Supported               | High performance file storage | Supported offset indicate | Not Supported    | Supported, requires a ZooKeeper server | Not Supported | Kafka uses key-value pairs format for configuration. These values can be supplied either from a file or programmatically. | Supported, use terminal command to expose core metrics |
-| RocketMQ          | Java, C++, Go        | Pull model, support TCP, JMS, OpenMessaging          | Ensure strict ordering of messages,and can scale out gracefully | Supported         |                                |                   |                                                         |                             |                               |                           |                  |                                        |               | Work out of box,user only need to pay attention to a few configurations |                                                        |
+| Messaging Product | Client SDK           | Protocol and Specification                           | Ordered Message                                              | Scheduled Message | Batched Message                                 | Broadcast Message | Message Filter                                          | Server Triggered Redelivery | Message Storage                                              | Message Retroactive                          | Message Priority | High Availability and Failover                               | Message Track | Configuration                                                | Management and Operation Tools                               |
+| ----------------- | -------------------- | ---------------------------------------------------- | ------------------------------------------------------------ | ----------------- | ----------------------------------------------- | ----------------- | ------------------------------------------------------- | --------------------------- | ------------------------------------------------------------ | -------------------------------------------- | ---------------- | ------------------------------------------------------------ | ------------- | ------------------------------------------------------------ | ------------------------------------------------------------ |
+| ActiveMQ          | Java, .NET, C++ etc. | Push model, support OpenWire, STOMP, AMQP, MQTT, JMS | Exclusive Consumer or Exclusive Queues can ensure ordering   | Supported         | Not Supported                                   | Supported         | Supported                                               | Not Supported               | Supports very fast persistence using JDBC along with a high performance journal，such as levelDB, kahaDB | Supported                                    | Supported        | Supported, depending on storage,if using levelDB it requires a ZooKeeper server | Not Supported | The default configuration is low level, user need to optimize the configuration parameters | Supported                                                    |
+| Kafka             | Java, Scala etc.     | Pull model, support TCP                              | Ensure ordering of messages within a partition               | Not Supported     | Supported, with async producer                  | Not Supported     | Supported, you can use Kafka Streams to filter messages | Not Supported               | High performance file storage                                | Supported offset indicate                    | Not Supported    | Supported, requires a ZooKeeper server                       | Not Supported | Kafka uses key-value pairs format for configuration. These values can be supplied either from a file or programmatically. | Supported, use terminal command to expose core metrics       |
+| RocketMQ          | Java, C++, Go        | Pull model, support TCP, JMS, OpenMessaging          | Ensure strict ordering of messages,and can scale out gracefully | Supported         | Supported, with sync mode to avoid message loss | Supported         | Supported, property filter expressions based on SQL92   | Supported                   | High performance and low latency file storage                | Supported timestamp and offset two indicates | Not Supported    | Supported, Master-Slave model, without another kit           | Supported     | Work out of box,user only need to pay attention to a few configurations | Supported, rich web and terminal command to expose core metrics |
 
 
 
@@ -114,3 +118,45 @@ This section describes the core concepts of Apache RocketMQ.
 ### Topic
 
 A topic is a top-level container that is used in Apache RocketMQ to transfer and store messages that belong to the same business logic. Learn more [Topic](https://rocketmq.apache.org/docs/domainModel/02topic).
+
+
+
+# Quick Start
+
+
+
+# Domain Model
+
+## Domain Model
+
+This section describes the domain model of Apache RocketMQ.
+
+Apache RocketMQ is a distributed middleware service that adopts an asynchronous communication model and a publish/subscribe message transmission model.
+
+For more information about the communication model and transmission model, see **Communication model** and **Message transmission model**.
+
+The asynchronous communication model of Apache RocketMQ features simple system topology and weak upstream-downstream coupling. Apache RocketMQ is used in asynchronous decoupling and load shifting scenarios.
+
+## Topic
+
+This section describes the definition, model relationship, internal attributes, and behavior constraints of topics in Apache RocketMQ. This topic also provides version compatibility information and usage notes for topics.
+
+### Definition
+
+A topic is logically a collection of queues; we may publish messages to or receive from it.
+
+Topics provide the following benefits:
+
+- **Message categorization and message isolation**: When you create a messaging service based on Apache RocketMQ, we recommend that you use different topics to manage messages of different business types for isolated storage and subscription.
+
+- **Identity and permission management**: Messages in Apache RocketMQ are anonymous. You can use a topic to perform identity and permission management for messages of a specific category.
+
+### Model relationship
+
+The following figure shows the position of a topic in the domain model of Apache RocketMQ.
+
+![](https://rocketmq.apache.org/assets/images/archifortopic-ef512066703a22865613ea9216c4c300.png)
+
+In Apache RocketMQ, a topic is a top-level storage container in which all message resources are defined. A topic is a logical concept and not the actual unit that stores messages.
+
+A topic contains one or more queues. Message storage and scalability are implemented based on queues. All constraints and attribute settings for a topic are implemented based on the queues in the topic.
