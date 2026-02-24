@@ -2,13 +2,13 @@
 
 
 
-RocketMQ official site：https://rocketmq.apache.org/
+RocketMQ official site: https://rocketmq.apache.org/
 
-RocketMQ GitHub link：https://github.com/apache/rocketmq
+RocketMQ GitHub link: https://github.com/apache/rocketmq
 
-RocketMQ docs v5.x：https://rocketmq.apache.org/docs/
+RocketMQ docs v5.x: https://rocketmq.apache.org/docs/
 
-RocketMQ docs v4.x：https://rocketmq.apache.org/docs/4.x/
+RocketMQ docs v4.x: https://rocketmq.apache.org/docs/4.x/
 
 
 
@@ -93,9 +93,13 @@ Here is an explanation of those core use cases and why RocketMQ was the "secret 
 
 ---
 
-After observing and analyzing the performance of the ActiveMQ IO module, we identified a bottleneck as the number of queues and virtual topics increased. We attempted to address this issue through various methods, such as throttling, circuit breakers, and service downgrades, but none proved satisfactory. We also considered using Kafka, a popular messaging solution, but it did not meet our requirements for low latency and high reliability, as explained below. As a result, we made the decision to develop a new messaging engine capable of handling a wider range of use cases, from traditional pub/sub to high-volume, real-time, zero-error transaction systems.
+> After observing and analyzing the performance of the ActiveMQ IO module, we identified a bottleneck as the number of queues and virtual topics increased. We attempted to address this issue through various methods, such as throttling, circuit breakers, and service downgrades, but none proved satisfactory. We also considered using Kafka, a popular messaging solution, but it did not meet our requirements for low latency and high reliability, as explained below. As a result, we made the decision to develop a new messaging engine capable of handling a wider range of use cases, from traditional pub/sub to high-volume, real-time, zero-error transaction systems.
 
-Since its inception, Apache RocketMQ has been widely adopted by enterprise developers and cloud vendors due to its simple architecture, rich business functionality, and extreme scalability. After more than a decade of extensive scenario polishing, RocketMQ has become the industry standard for financial-grade reliable business messages and is widely used in Internet, big data, mobile Internet, IoT, and other fields.
+
+
+> Since its inception, Apache RocketMQ has been widely adopted by enterprise developers and cloud vendors due to its simple architecture, rich business functionality, and extreme scalability. After more than a decade of extensive scenario polishing, RocketMQ has become the industry standard for financial-grade reliable business messages and is widely used in Internet, big data, mobile Internet, IoT, and other fields.
+
+
 
 ---
 
