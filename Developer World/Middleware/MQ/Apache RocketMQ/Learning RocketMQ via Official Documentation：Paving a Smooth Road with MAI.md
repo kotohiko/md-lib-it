@@ -20,9 +20,15 @@ RocketMQ docs v4.x: https://rocketmq.apache.org/docs/4.x/
 
 ### Why RocketMQ
 
-> During the early stages of RocketMQ's development at Alibaba, we utilized it for a multitude of purposes, including asynchronous communications, search, social networking activity flows, data pipelines, and trade processes. As our trade business grew, we noticed that the messaging cluster was under increasing pressure.
+During the early stages of RocketMQ's development at Alibaba, we utilized it for a multitude of purposes, including asynchronous communications, search, social networking activity flows, data pipelines, and trade processes. As our trade business grew, we noticed that the messaging cluster was under increasing pressure.
 
-#### **[TOPIC 1] RocketMQ's original**
+After observing and analyzing the performance of the ActiveMQ IO module, we identified a bottleneck as the number of queues and virtual topics increased. We attempted to address this issue through various methods, such as throttling, circuit breakers, and service downgrades, but none proved satisfactory. We also considered using Kafka, a popular messaging solution, but it did not meet our requirements for low latency and high reliability, as explained below. As a result, we made the decision to develop a new messaging engine capable of handling a wider range of use cases, from traditional pub/sub to high-volume, real-time, zero-error transaction systems.
+
+Since its inception, Apache RocketMQ has been widely adopted by enterprise developers and cloud vendors due to its simple architecture, rich business functionality, and extreme scalability. After more than a decade of extensive scenario polishing, RocketMQ has become the industry standard for financial-grade reliable business messages and is widely used in Internet, big data, mobile Internet, IoT, and other fields.
+
+---
+
+#### ⛩️[TOPIC 1] RocketMQ's original
 
 📖 Answer via **Google AI Overviews** |🧑‍⚖️ Verified by **Qwen3.5-Plus**
 
@@ -31,9 +37,9 @@ Apache RocketMQ, originally developed by Alibaba in 2012 to handle **massive e-c
 **Key Historical Milestones**
 
 - **2012 (Birth):** Alibaba developed RocketMQ to address performance bottlenecks with ActiveMQ and Kafka, specifically needing low latency and high reliability for its e-commerce business, and immediately open-sourced it.
-- **2015 (Cloud Era):** RocketMQ was launched on [Alibaba Cloud](https://www.alibabacloud.com/blog/the-road-to-large-scale-commercialization-of-apache-rocketmq-on-alibaba-cloud_599621), becoming the first open-source message queue to provide a public cloud (SaaS) service.
+- **2015 (Cloud Era):** RocketMQ was launched on [Alibaba Cloud](https://www.alibabacloud.com/blog/the-road-to-large-scale-commercialization-of-apache-rocketmq-on-alibaba-cloud_599621), becoming **the first open-source message queue** to provide a public cloud (SaaS) service.
 - **2016 (Apache Donation):** Alibaba donated the project to the Apache Software Foundation.
-- **2017 (Apache TLP):** RocketMQ graduated as an Apache **Top-Level Project (TLP)**, becoming the first Chinese open-source project to achieve this status.
+- **2017 (Apache TLP):** RocketMQ graduated as an Apache **Top-Level Project (TLP)**, becoming **the first Chinese open-source project** to achieve this status.
 - **2022 (Version 5.0):** Released to focus on cloud-native architecture, introducing gRPC (Google Remote Procedure Call) support and separating storage from computation, evolving it into a messaging, event, and streaming platform.
 
 **Evolution Phases**
@@ -44,11 +50,11 @@ Apache RocketMQ, originally developed by Alibaba in 2012 to handle **massive e-c
 
 Today, RocketMQ serves as a foundational component for microservices and big data in many industries.
 
-#### [TOPIC 2] RocketMQ's core use cases
+#### ⛩️[TOPIC 2] RocketMQ's core use cases
 
 📖 Answer via **Gemini 3**
 
-It’s impressive to see how RocketMQ evolved from an internal Alibaba project to a top-level Apache foundation powerhouse. Handling the sheer scale of "Double 11" (Singles’ Day) required a tool that wasn't just a mailbox, but a high-performance backbone for the entire ecosystem.
+It's impressive to see how RocketMQ evolved from an internal Alibaba project to a top-level Apache foundation powerhouse. Handling the sheer scale of "Double 11" (Singles' Day) required a tool that wasn't just a mailbox, but a high-performance backbone for the entire ecosystem.
 
 Here is an explanation of those core use cases and why RocketMQ was the "secret sauce" for each.
 
@@ -65,11 +71,11 @@ Here is an explanation of those core use cases and why RocketMQ was the "secret 
 
     - The Goal: Keep the search index consistent with the database without slowing down the database writes.
 
-    - How it works: Whenever a change occurs in the database, a "Change Data Capture" (CDC) event is sent to RocketMQ. A search consumer subscribes to these messages and updates the search engine (like Elasticsearch) in near real-time.
+    - How it works: Whenever a change occurs in the database, a **Change Data Capture (CDC)** event is sent to RocketMQ. **A search consumer subscribes to these messages and updates the search engine** (like Elasticsearch) in near real-time.
 
-3. **Social Networking Activity Flows**
+3. **Social Networking Activity Flows (Broadcast Notifications)**
 
-    Think of "Feeds"—the stream of updates when a friend posts a photo or likes a product. In social networking, one action can trigger thousands of updates for followers.
+    Think of "Feeds"—the stream of updates when a friend posts a photo or likes a product. In social networking, **one action can trigger thousands of updates for followers**.
 
     - The Goal: Handle massive "fan-out" (one message going to many people) and high-concurrency traffic.
 
@@ -85,21 +91,11 @@ Here is an explanation of those core use cases and why RocketMQ was the "secret 
 
 5. **Trade Processes (Distributed Transactions)**
 
-    This is arguably RocketMQ's most critical role. When you buy an item, multiple things must happen: your money is deducted, the seller's inventory decreases, and a shipping order is created.
+    This is arguably RocketMQ's **most critical role**. When you buy an item, multiple things must happen: your money is deducted, the seller's inventory decreases, and a shipping order is created.
 
     - The Goal: Ensure "Eventual Consistency" across different databases without using slow, heavy-duty locking mechanisms.
 
-    - How it works: RocketMQ uses **Transactional Messages**. It ensures that the message is only "delivered" to downstream services if the local database transaction (like the payment) succeeds. If the payment fails, the message is deleted. If the payment succeeds but the inventory service is down, RocketMQ will keep retrying until the inventory is correctly updated.
-
----
-
-> After observing and analyzing the performance of the ActiveMQ IO module, we identified a bottleneck as the number of queues and virtual topics increased. We attempted to address this issue through various methods, such as throttling, circuit breakers, and service downgrades, but none proved satisfactory. We also considered using Kafka, a popular messaging solution, but it did not meet our requirements for low latency and high reliability, as explained below. As a result, we made the decision to develop a new messaging engine capable of handling a wider range of use cases, from traditional pub/sub to high-volume, real-time, zero-error transaction systems.
-
-
-
-> Since its inception, Apache RocketMQ has been widely adopted by enterprise developers and cloud vendors due to its simple architecture, rich business functionality, and extreme scalability. After more than a decade of extensive scenario polishing, RocketMQ has become the industry standard for financial-grade reliable business messages and is widely used in Internet, big data, mobile Internet, IoT, and other fields.
-
-
+    - How it works: RocketMQ uses **Transactional Messages**. It ensures that the message is only "delivered" to downstream services if the local database transaction (like the payment) succeeds. If the payment fails, the message is deleted. If the payment succeeds but the inventory service is down, RocketMQ will **keep retrying** until the inventory is correctly updated.
 
 ---
 
@@ -121,9 +117,67 @@ This section describes the core concepts of Apache RocketMQ.
 
 ### Topic
 
-A topic is a top-level container that is used in Apache RocketMQ to transfer and store messages that belong to the same business logic. Learn more [Topic](https://rocketmq.apache.org/docs/domainModel/02topic).
+A topic is a **top-level** container that is used in Apache RocketMQ to transfer and store messages that belong to the **same business logic**. A Topic is uniquely identified and distinguished by its TopicName[^1]. Learn more [Topic](https://rocketmq.apache.org/docs/domainModel/02topic).
+
+### MessageType
+
+Categories defined by **message transfer characteristics** for type management and security verification. Apache RocketMQ support NORMAL, FIFO, TRANSACTION and DELAY message type.
+
+> ❗️info
+>
+> Starting from version 5.0, Apache RocketMQ supports enforcing the validation of message types, that is, each topic only allows messages of a single type to be sent. This can better facilitate operation and management of production systems and avoid confusion. However, to ensure backward compatibility with version 4.x, the validation feature is enable by default.
+
+### MessageQueue
+
+MessageQueue is a container that is used to store and transmit messages in Apache RocketMQ. MessageQueue is the smallest unit of storage for Apache RocketMQ messages. Learn more [MessageQueue](https://rocketmq.apache.org/docs/domainModel/03messagequeue).
+
+### Message
+
+A message is the **smallest unit of data transmission** in Apache RocketMQ. A producer encapsulates the load and extended attributes of business data into messages and sends the messages to a Apache RocketMQ broker. Then, the broker delivers the messages to the consumer based on the relevant semantics. Learn more [Message](https://rocketmq.apache.org/docs/domainModel/04message).
+
+### MessageView
+
+MessageView is read-only interface to message from a development perspective. The message view allows you to read multiple properties and payload information inside a message, but you cannot make any changes to the message itself.
+
+### MessageTag
+
+MessageTag is a fine-grained message classification property that allows message to be subdivided below the topic level. Consumers implement message filtering by subscribing to specific tags. Learn more [MessageFilter](https://rocketmq.apache.org/docs/featureBehavior/07messagefilter).
+
+### MessageOffset
+
+Messages are stored in the queue in order of precedence, each message has a unique coordinate of type Long in the queue, which is defined as the message site. Learn more [Consumer progress management](https://rocketmq.apache.org/docs/featureBehavior/09consumerprogress)。
+
+### ConsumerOffset
+
+A message is not removed from the queue immediately after it has been consumed by a consumer, Apache RocketMQ will record the last consumed message based on each consumer group. Learn more [Consumer progress management](https://rocketmq.apache.org/docs/featureBehavior/09consumerprogress).
+
+### MessageKey
+
+MessageKey is The message-oriented index property. By setting the message index, you can quickly find the corresponding message content.
+
+### Producer
+
+A producer in Apache RocketMQ is a functional messaging entity that creates messages and sends them to the server. A producer is typically integrated on the business system and serves to encapsulate data as messages in Apache RocketMQ and send the messages to the server. Learn more [Producer](https://rocketmq.apache.org/docs/domainModel/04producer)。
+
+### TransactionChecker
+
+Apache RocketMQ uses a transaction messaging mechanism that requires a producer to implement a transaction checker to ensure eventual consistency of transactions. Learn more [Transaction Message](https://rocketmq.apache.org/docs/featureBehavior/04transactionmessage)。
+
+### ConsumerGroup
+
+A consumer group is a load balancing group that contains consumers that use the same consumption behaviors in Apache RocketMQ. Learn more [ConsumerGroup](https://rocketmq.apache.org/docs/domainModel/07consumergroup)。
+
+### Consumer
+
+A consumer is an entity that receives and processes messages in Apache RocketMQ. Consumers are usually integrated in business systems. They obtain messages from Apache RocketMQ brokers and convert the messages into information that can be perceived and processed by business logic. Learn more [Consumer](https://rocketmq.apache.org/docs/domainModel/08consumer)。
+
+### Subscription
+
+A subscription is the rule and status settings for consumers to obtain and process messages in Apache RocketMQ. Subscriptions are dynamically registered by consumer groups with brokers. Messages are then matched and consumed based on the filter rules defined by subscriptions. Learn more [Subscription](https://rocketmq.apache.org/docs/domainModel/09subscription)。
 
 
+
+[^1]: This sentence was added by the author of this document. It appears in the Chinese documentation but is missing from the English version.
 
 # Quick Start
 
@@ -140,6 +194,52 @@ Apache RocketMQ is a distributed middleware service that adopts an asynchronous 
 For more information about the communication model and transmission model, see **Communication model** and **Message transmission model**.
 
 The asynchronous communication model of Apache RocketMQ features simple system topology and weak upstream-downstream coupling. Apache RocketMQ is used in asynchronous decoupling and load shifting scenarios.
+
+### Domain model of Apache RocketMQ
+
+![](https://rocketmq.apache.org/assets/images/mainarchi-9b036e7ff5133d050950f25838367a17.png)
+
+As shown in the preceding figure, the lifecycle of a Apache RocketMQ message consists of three stages: production, storage, and consumption.
+
+A producer generates a message and sends it to a Apache RocketMQ broker. The message is stored in a topic on the broker. A consumer subscribes to the topic to consume the message.
+
+#### Message production
+
+[Producer](https://rocketmq.apache.org/docs/domainModel/04producer)：
+
+The running entity that is used to generate messages in Apache RocketMQ. Producers are the upstream parts of business call links. Producers are lightweight, anonymous, and do not have identities.
+
+#### Message storage
+
+- [Topic](https://rocketmq.apache.org/docs/domainModel/02topic)：
+
+    The grouping container that is used for message transmission and storage in Apache RocketMQ. A topic consists of multiple message queues, which are used to store messages and scale out the topic.
+
+- [MessageQueue](https://rocketmq.apache.org/docs/domainModel/03messagequeue)：
+
+    The unit container that is used for message transmission and storage in Apache RocketMQ. Message queues are similar to partitions in Kafka. Apache RocketMQ stores messages in a streaming manner based on an infinite queue structure. Messages are stored in order in a queue.
+
+- [Message](https://rocketmq.apache.org/docs/domainModel/04message)：
+
+    The minimum unit of data transmission in Apache RocketMQ. Messages are immutable after they are initialized and stored.
+
+#### Message consumption
+
+- [ConsumerGroup](https://rocketmq.apache.org/docs/domainModel/07consumergroup)：
+
+    An independent group of consumption identities defined in the publish/subscribe model of Apache RocketMQ. A consumer group is used to centrally manage consumers that run at the bottom layer. Consumers in the same group must maintain the same consumption logic and configurations with each other, and consume the messages subscribed by the group together to scale out the consumption capacity of the group.
+
+- [Consumer](https://rocketmq.apache.org/docs/domainModel/08consumer)：
+
+    The running entity that is used to consume messages in Apache RocketMQ. Consumers are the downstream parts of business call links, A consumer must belong to a specific consumer group.
+
+- [Subscription](https://rocketmq.apache.org/docs/domainModel/09subscription)：
+
+    The collection of configurations in the publish/subscribe model of Apache RocketMQ. The configurations include message filtering, retry, and consumer progress Subscriptions are managed at the consumer group level. You use consumer groups to specify subscriptions to manage how consumers in the group filter messages, retry consumption, and restore a consumer offset.
+
+    The configurations in a Apache RocketMQ subscription are all persistent, except for filter expressions. Subscriptions are unchanged regardless of whether the broker restarts or the connection is closed.
+
+### Communication model
 
 ## Topic
 
