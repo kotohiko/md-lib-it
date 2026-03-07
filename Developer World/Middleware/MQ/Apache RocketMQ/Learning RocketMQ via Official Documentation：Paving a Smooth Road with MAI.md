@@ -28,7 +28,7 @@ Since its inception, Apache RocketMQ has been widely adopted by enterprise devel
 
 ---
 
-#### ⛩️[TOPIC 1] RocketMQ's original
+#### ⛩️[TORII 1] RocketMQ's original
 
 📖 Answer via **Google AI Overviews** |🧑‍⚖️ Verified by **Qwen3.5-Plus**
 
@@ -50,7 +50,7 @@ Apache RocketMQ, originally developed by Alibaba in 2012 to handle **massive e-c
 
 Today, RocketMQ serves as a foundational component for microservices and big data in many industries.
 
-#### ⛩️[TOPIC 2] RocketMQ's core use cases
+#### ⛩️[TORII  2] RocketMQ's core use cases
 
 📖 Answer via **Gemini 3**
 
