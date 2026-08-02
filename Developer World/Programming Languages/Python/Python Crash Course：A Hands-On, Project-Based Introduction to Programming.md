@@ -1,49 +1,32 @@
-# PART I: BASICS
+# Setting Up Your Programming Environment
 
-
-
-## CHAPTER 1   GETTING STARTED
-
-
-
-### Setting Up Your Programming Environment
-
-#### Python Versions
+## Python Versions
 
 **A programming language must evolve to keep up with new technologies and new ways of writing software**. Python is one of the best examples of this. Over the years, its developers have continuously improved the language, making it more useful, expressive, and efficient.
 
-##### 1. AI and Data Science
+### 1. AI and Data Science
 
 Twenty years ago, Python was mainly used for scripting and automation. Today, it is the world's most popular language for AI and machine learning. This happened because Python evolved together with the AI ecosystem.
 
 - Libraries such as **NumPy**, **Pandas**, **TensorFlow**, and **PyTorch** were developed.
-- Python itself also added features (such as type hints and better performance improvements) that make large AI projects easier to maintain.
-
-For example:
-
-- In the 1990s, a Python programmer might write a small script to rename files.
-- In 2026, the same language can be used to train a large language model or build an AI chatbot.
+- Python itself also added features (such as **type hints** and better performance improvements) that make large AI projects easier to maintain.
 
 The language successfully adapted to one of the biggest technological revolutions in history.
 
-##### 2. Web Development
+### 2. Web Development
 
-As the Internet became more important, Python also evolved into a powerful web development language.
-
-Frameworks such as **Django** and **Flask** allow developers to build websites and web services much more easily. Many years ago, building a website often required writing a large amount of repetitive code. Today, with Django, many common tasks are already provided:
+As the Internet became more important, Python also evolved into a powerful web development language. Frameworks such as **Django** and **Flask** allow developers to build websites and web services much more easily. Many years ago, building a website often required writing a large amount of repetitive code. Today, with Django, many common tasks are already provided:
 
 - User login
 - Database operations
 - Security protection
 - Admin dashboard
 
-Instead of reinventing the wheel every time, developers can focus on business logic. This shows how Python became more **versatile** as new technologies emerged.
+Instead of **reinventing the wheel** every time, developers can focus on business logic. This shows how Python became more **versatile** as new technologies emerged.
 
-##### 3. Syntax Sugar (Making Code Easier to Write)
+### 3. Syntax Sugar (Making Code Easier to Write)
 
-Programming languages don't only become more powerful—they also become easier to use. Python has added many kinds of **syntactic sugar**, which allow programmers to write cleaner and more readable code.
-
-A famous example is the **f-string**.
+Programming languages don't only become more powerful—they also become easier to use. Python has added many kinds of **syntactic sugar**, which allow programmers to write cleaner and more readable code. A famous example is the **f-string**.
 
 Older style:
 
@@ -81,26 +64,9 @@ Runnable r = () -> System.out.println("Hello");
 
 The language became simpler without losing functionality.
 
-##### 4. Better Support for Large Software Projects
+### 4. Performance Improvements
 
-In the early days, Python was mainly used for small scripts.
-
-As companies started building large systems with Python, developers needed better tools.
-
-Python gradually introduced features such as:
-
-- Type hints
-- Better package management
-- Improved error messages
-- Faster interpreter optimizations
-
-These improvements make Python much more suitable for enterprise-scale development.
-
-##### 5. Performance Improvements
-
-People often say Python is slow.
-
-Instead of changing the language completely, Python developers have continuously improved its performance.
+People often say Python is slow. Instead of changing the language completely, Python developers have continuously improved its performance.
 
 For example:
 
@@ -108,103 +74,11 @@ For example:
 - Better memory management
 - Optimizations that make many programs run noticeably faster without changing the source code
 
-The goal is to let existing Python programs become faster while keeping the language easy to learn.
+The goal is to let existing Python programs become faster while keeping the language easy to learn. Each new technological wave encouraged Python to grow, either by introducing new language features or by supporting new libraries and frameworks.
 
-##### 6. Compatibility with New Technologies
+## Running Snippets of Python Code
 
-Technology never stops changing.
+## 
 
-Over the years, Python has successfully adapted to many new fields:
-
-- Cloud computing
-- Big data
-- Artificial Intelligence
-- Scientific computing
-- Automation
-- Cybersecurity
-- Internet of Things (IoT)
-
-Each new technological wave encouraged Python to grow, either by introducing new language features or by supporting new libraries and frameworks.
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-#### Running Snippets of Python Code
-
-
-
-```shell
-
-```
-
-### Python on Different Operating Systems
-
-
-
-
-
-## CHAPTER 2   VARIABLES AND SIMPLE DATA TYPES
-
-
-
-### Variables
-
-
-
-### Strings
-
-
-
-#### Changing Case in a String with Methods
-
-#### 
-
-
-
-
-
-
-
-
-
-## CHAPTER 3   INTRODUCING LISTS
-
-
-
-
-
-
-
-# CHAPTER 6   DICTIONARIES
-
-
-
-
-
-# CHAPTER 7   USER INPUT AND WHILE LOOPS
-
-
-
-
-
-
-
-
-
-
-
-# CHAPTER 8   FUNCTIONS
-
-
+After learning Java, I tend to wonder how a new programming language works just by printing 'Hello World'. Unlike Java, C, and C++, Python's 'Hello World' seems much simpler—just one line of code. So, what is the interpreter actually doing under the hood when it runs this?
 
