@@ -75,10 +75,3 @@ For example:
 - Optimizations that make many programs run noticeably faster without changing the source code
 
 The goal is to let existing Python programs become faster while keeping the language easy to learn. Each new technological wave encouraged Python to grow, either by introducing new language features or by supporting new libraries and frameworks.
-
-## Running Snippets of Python Code
-
-## 
-
-After learning Java, I tend to wonder how a new programming language works just by printing 'Hello World'. Unlike Java, C, and C++, Python's 'Hello World' seems much simpler—just one line of code. So, what is the interpreter actually doing under the hood when it runs this?
-
