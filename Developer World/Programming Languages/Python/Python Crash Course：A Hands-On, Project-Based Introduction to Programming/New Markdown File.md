@@ -68,6 +68,8 @@ When switching from one programming language to a new one, following the new lan
 
 The Python interpreter has an interesting error-correction mechanism…
 
+(TBA)
+
 ### Variables Are Labels
 
 When programming with variables, the output may sometimes contradict expectations; however, thoroughly understanding the language's underlying mechanisms can help avoid these unexpected situations. If you are coming to Python from another programming language, it is very helpful to understand the tag/box mechanism. If you are a complete beginner, just knowing it exists is enough for now, as we will cover it later.
@@ -113,6 +115,10 @@ When programming with variables, the output may sometimes contradict expectation
 > - **Everything in Python**: In Python, **everything is an object** (including the number `1` and the boolean `True`). Python has no primitive types; everything uses labels.
 
 # Strings
+
+## Changing Case in a String with Methods
+
+
 
 # Numbers
 
